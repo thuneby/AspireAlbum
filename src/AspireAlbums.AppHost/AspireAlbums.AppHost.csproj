@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>8b5fe172-6671-4970-bfa0-8f0f529a1441</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspireAlbums.AlbumApi\AspireAlbums.AlbumApi.csproj" />
+    <ProjectReference Include="..\AspireAlbums.AlbumUI\AspireAlbums.AlbumUI.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,49 @@
+﻿@page "/"
+@using AlbumUI.Services
+@attribute [StreamRendering(true)]
+
+@inject AlbumService AlbumService
+
+<div class="ui container">
+    <h1 class="ui center aligned icon block header">
+        Albums <span class="bi bi-music-note-beamed"></span>
+    </h1>
+
+@if (albums == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="ui attached segment">
+        <div class="ui divided items">
+            @foreach (var album in albums)
+            {
+                <div class="item">
+                    <div class="ui image small">
+                        <img src="@album.Image_url"  />
+                    </div>
+                    <div class="content">
+                        <div class="header">
+                            <span class="album-title">@album.Title</span>
+                        </div>
+                        <div class="meta">
+                            <span class="meta-info">@album.Artist</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+}
+</div>
+
+@code {
+    private List<Album> albums;
+
+    protected override async Task OnInitializedAsync()
+    {
+        albums = (await AlbumService.GetAlbumsAsync()).ToList();
+    }
+}
