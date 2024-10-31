@@ -6,7 +6,7 @@
 
 <h1>Albums <span class="bi bi-music-note-beamed"></span></h1>
 
-@if (albums == null)
+@if (_albums.Count == 0)
 {
     <p><em>Loading...</em></p>
 }
@@ -22,7 +22,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var album in albums)
+            @foreach (var album in _albums)
             {
                 <tr>
                     <td>@album.Id</td>
@@ -38,10 +38,10 @@ else
 })
 
 @code {
-    private List<Album> albums;
+    private List<Album> _albums = [];
 
     protected override async Task OnInitializedAsync()
     {
-        albums = (await AlbumService.GetAlbumsAsync()).ToList();
+        _albums = (await AlbumService.GetAlbumsAsync()).ToList();
     }
 }
